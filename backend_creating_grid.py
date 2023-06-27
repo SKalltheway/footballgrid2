@@ -1,26 +1,41 @@
 import random
-import random
 
-def generate_team_grid():
-    teams = ["Team A", "Team B", "Team C"]  # Replace with the actual team names
-    random.shuffle(teams)  # Randomize the team order
+def generate_player_grid():
+    teams_x_data = ["CARDINALS", "FALCONS", "RAVENS", "BILLS", "PANTHERS","BENGALS", "BROWNS", "BEARS", "COWBOYS", "BRONCOS", "LIONS", "PACKERS", "TEXANS", "COLTS", "CHIEFS", "CHARGERS", "RAMS", "JAGUARS", "DOLPHINS", "VIKINGS", "PATRIOTS", "SAINTS", "GIANTS", "JETS", "RAIDERS", "EAGLES", "49ERS", "SEAHAWKS", "STEELERS", "BUCCANEERS", "TITANS", "REDSKINS"]
+    teams_y_data = ["CARDINALS", "FALCONS", "RAVENS", "BILLS", "PANTHERS","BENGALS", "BROWNS", "BEARS", "COWBOYS", "BRONCOS", "LIONS", "PACKERS", "TEXANS", "COLTS", "CHIEFS", "CHARGERS", "RAMS", "JAGUARS", "DOLPHINS", "VIKINGS", "PATRIOTS", "SAINTS", "GIANTS", "JETS", "RAIDERS", "EAGLES", "49ERS", "SEAHAWKS", "STEELERS", "BUCCANEERS", "TITANS", "REDSKINS"]
     
+
+    teams_x = random.choices(teams_x_data, k=3)
+    teams_y_data.remove(teams_x[0])
+    teams_y_data.remove(teams_x[1])
+    teams_y_data.remove(teams_x[2])
+    teams_y = random.choices(teams_y_data, k=3)
+    print(teams_x)
+    print(teams_y)
+
     grid = []
-    players = ["Player 1", "Player 2", "Player 3", "Player 4", "Player 5", "Player 6", "Player 7", "Player 8", "Player 9"]  # Replace with actual player names
     
     # Generate the grid
     for i in range(3):
         row = []
         for j in range(3):
-            team = teams[i]
-            player = random.choice(players)
-            row.append(f"{team}: {player}")
-            players.remove(player)  # Remove the selected player from the list
+            player = input(f"Enter player for {teams_x[i]} and {teams_y[j]}: ")
+            row.append(player)
         grid.append(row)
     
     # Print the grid
-    for row in grid:
-        print(" | ".join(row))
+    print("  |", end="")
+    for team_y in teams_y:
+        print(f" {team_y} |", end="")
+    print()
+    print("-" * (6 + 9 * len(teams_y)))
+    
+    for i, row in enumerate(grid):
+        print(f"{teams_x[i]} |", end="")
+        for player in row:
+            print(f" {player} |", end="")
+        print()
+        print("-" * (6 + 9 * len(teams_y)))
 
-# Generate and display the team grid with players
-generate_team_grid()
+# Generate and display the player grid
+generate_player_grid()
