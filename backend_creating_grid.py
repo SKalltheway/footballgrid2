@@ -5,13 +5,28 @@ def generate_player_grid():
     teams_y_data = ["CARDINALS", "FALCONS", "RAVENS", "BILLS", "PANTHERS","BENGALS", "BROWNS", "BEARS", "COWBOYS", "BRONCOS", "LIONS", "PACKERS", "TEXANS", "COLTS", "CHIEFS", "CHARGERS", "RAMS", "JAGUARS", "DOLPHINS", "VIKINGS", "PATRIOTS", "SAINTS", "GIANTS", "JETS", "RAIDERS", "EAGLES", "49ERS", "SEAHAWKS", "STEELERS", "BUCCANEERS", "TITANS", "REDSKINS"]
     
 
-    teams_x = random.choices(teams_x_data, k=3)
+    teams_x = [random.choice(teams_x_data)]
+
+    teams_x_data.remove(teams_x[0])
+    teams_x.insert(1, random.choice(teams_x_data))
+    teams_x_data.remove(teams_x[1])
+    teams_x.insert(2, random.choice(teams_x_data))
+    teams_x_data.remove(teams_x[2])
+    
+    
     teams_y_data.remove(teams_x[0])
     teams_y_data.remove(teams_x[1])
     teams_y_data.remove(teams_x[2])
-    teams_y = random.choices(teams_y_data, k=3)
+    teams_y = [random.choice(teams_y_data)]
+    teams_y_data.remove(teams_y[0])
+    teams_y.insert(1, random.choice(teams_y_data))
+    teams_y_data.remove(teams_y[1])
+    teams_y.insert(2, random.choice(teams_y_data))
+    teams_y_data.remove(teams_y[2])
+    
     print(teams_x)
     print(teams_y)
+
 
     grid = []
     
