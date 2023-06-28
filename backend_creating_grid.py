@@ -39,8 +39,9 @@ def generate_player_grid():
     for i in range(3):
         row = []
         for j in range(3):
+            df = pd.read_csv(DATA_PATH)
+            print(df.head())
             player = input(f"Enter player for {teams_x[i]} and {teams_y[j]}: ")
-            df = pd.read_csv()
             row.append(player)
         grid.append(row)
     
