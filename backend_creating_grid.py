@@ -1,9 +1,14 @@
 import random
+import csv as csv
+import pandas as pd
+
+DATA_PATH = 'all_NFL_players_ever.csv'
 
 def generate_player_grid():
     teams_x_data = ["CARDINALS", "FALCONS", "RAVENS", "BILLS", "PANTHERS","BENGALS", "BROWNS", "BEARS", "COWBOYS", "BRONCOS", "LIONS", "PACKERS", "TEXANS", "COLTS", "CHIEFS", "CHARGERS", "RAMS", "JAGUARS", "DOLPHINS", "VIKINGS", "PATRIOTS", "SAINTS", "GIANTS", "JETS", "RAIDERS", "EAGLES", "49ERS", "SEAHAWKS", "STEELERS", "BUCCANEERS", "TITANS", "REDSKINS"]
     teams_y_data = ["CARDINALS", "FALCONS", "RAVENS", "BILLS", "PANTHERS","BENGALS", "BROWNS", "BEARS", "COWBOYS", "BRONCOS", "LIONS", "PACKERS", "TEXANS", "COLTS", "CHIEFS", "CHARGERS", "RAMS", "JAGUARS", "DOLPHINS", "VIKINGS", "PATRIOTS", "SAINTS", "GIANTS", "JETS", "RAIDERS", "EAGLES", "49ERS", "SEAHAWKS", "STEELERS", "BUCCANEERS", "TITANS", "REDSKINS"]
-    
+
+    team_map = dict({'Ari' : 'CARDINALS', 'Atl' : 'FALCONS',})
 
     teams_x = [random.choice(teams_x_data)]
 
@@ -35,6 +40,7 @@ def generate_player_grid():
         row = []
         for j in range(3):
             player = input(f"Enter player for {teams_x[i]} and {teams_y[j]}: ")
+            df = pd.read_csv()
             row.append(player)
         grid.append(row)
     
