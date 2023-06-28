@@ -40,7 +40,8 @@ def generate_player_grid():
         row = []
         for j in range(3):
             df = pd.read_csv(DATA_PATH)
-            print(df.head())
+            for index, row in df.iterrows():
+                print(row)
             player = input(f"Enter player for {teams_x[i]} and {teams_y[j]}: ")
             row.append(player)
         grid.append(row)
