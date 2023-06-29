@@ -43,7 +43,8 @@ def generate_player_grid():
             player = input(f"Enter player for {teams_x[i]} and {teams_y[j]}: ")
             for index, row in df.iterrows():   
                 if player == row[0]:
-                    print(row)
+                    player_teams = row[3].split()
+                    print(player_teams)
             #team_map.get()
             row1.append(player)
         grid.append(row1)
