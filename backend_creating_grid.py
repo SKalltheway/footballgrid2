@@ -31,20 +31,22 @@ def generate_player_grid():
     
     print(teams_x)
     print(teams_y)
-
+    df = pd.read_csv(DATA_PATH)
 
     grid = []
     
     # Generate the grid
     for i in range(3):
-        row = []
+        row1 = []
         for j in range(3):
-            df = pd.read_csv(DATA_PATH)
-            for index, row in df.iterrows():
-                print(row)
+            
             player = input(f"Enter player for {teams_x[i]} and {teams_y[j]}: ")
-            row.append(player)
-        grid.append(row)
+            for index, row in df.iterrows():   
+                if player == row[0]:
+                    print(row)
+            #team_map.get()
+            row1.append(player)
+        grid.append(row1)
     
     # Print the grid
     print("  |", end="")
