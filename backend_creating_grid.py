@@ -45,8 +45,15 @@ def generate_player_grid():
                 if player == row[0]:
                     player_teams_with_years = row[3].split()
                     player_teams = [item for item in player_teams_with_years if not (item.isdigit() or len(item) > 4 )]
+                    j = 0
+                    while j<len(player_teams):
+                        player_teams[j] = player_teams[j].translate({ord(","): None})
+                        j = j + 1
                     print(player_teams)
-                    #print(team_map.get(player_teams))
+                    i = 0
+                    while i<len(player_teams):
+                        print(team_map.get(player_teams[i]))
+                        i=i+1
             row1.append(player)
         grid.append(row1)
     
