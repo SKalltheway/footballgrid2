@@ -39,6 +39,7 @@ def generate_player_grid():
     num_correct = 0
     correct_guesses = []
     while guesses_remaining > 0:
+        player_name = ''
         print("Press 1 for ", teams_x[0], " and ", teams_y[0])
         print("Press 2 for ", teams_x[1], " and ", teams_y[0])
         print("Press 3 for ", teams_x[2], " and ", teams_y[0])
@@ -56,6 +57,8 @@ def generate_player_grid():
         player = input(f"Enter player for {teams_x[choice_dict.get(user_choice)[0]]} and {teams_y[choice_dict.get(user_choice)[1]]}: ")
         for index, row in df.iterrows():   
             if player == row[0]:
+                player_name = player
+                print(player_name)
                 player_teams_with_years = row[3].split()
                 player_teams = [item for item in player_teams_with_years if not (item.isdigit() or len(item) > 4 )]
                 y = 0
@@ -71,18 +74,19 @@ def generate_player_grid():
                 print([teams_x[choice_dict.get(user_choice)[0]],teams_y[choice_dict.get(user_choice)[1]]])
                 if all(var in team_names for var in [teams_x[choice_dict.get(user_choice)[0]],teams_y[choice_dict.get(user_choice)[1]] ]):
                     print('Correct!')
-                    temp_player_dict = dict({user_choice: player})
+                    temp_player_dict = dict({user_choice: player_name})
                     correct_guesses.insert(num_correct, user_choice)
                     correct_players.update(temp_player_dict)
                     num_correct = num_correct + 1
                     guesses_remaining = guesses_remaining - 1
-                    print(correct_players.get(1))
                 else:
                     print('Incorrect :(')
                     guesses_remaining = guesses_remaining - 1
                     print(correct_players)
-        else:
+        if not player_name:
             print('Player Not Found, please try again')
+        
+        
 
     # Generate the grid
     """""
@@ -115,9 +119,9 @@ def generate_player_grid():
     grid.append(row1)
     """
 
-    row1 = [correct_players.get('1'), correct_players.get('2'), correct_players.get('3')]
-    row2 = [correct_players.get('4'), correct_players.get('5'), correct_players.get('6')] 
-    row3 = [correct_players.get('7'), correct_players.get('8'), correct_players.get('9')]
+    row1 = [correct_players.get('1'), correct_players.get('4'), correct_players.get('7')]
+    row2 = [correct_players.get('2'), correct_players.get('5'), correct_players.get('8')] 
+    row3 = [correct_players.get('3'), correct_players.get('6'), correct_players.get('9')]
     grid.append(row1)
     grid.append(row2)
     grid.append(row3)
