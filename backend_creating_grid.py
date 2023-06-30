@@ -36,8 +36,8 @@ def generate_player_grid():
 
     grid = []
     guesses_remaining = 9
-    correct_grids = []
     num_correct = 0
+    correct_guesses = []
     while guesses_remaining > 0:
         print("Press 1 for ", teams_x[0], " and ", teams_y[0])
         print("Press 2 for ", teams_x[1], " and ", teams_y[0])
@@ -48,7 +48,11 @@ def generate_player_grid():
         print("Press 7 for ", teams_x[0], " and ", teams_y[2])
         print("Press 8 for ", teams_x[1], " and ", teams_y[2])
         print("Press 9 for ", teams_x[2], " and ", teams_y[2])
+        print("You have ", guesses_remaining, " guesses remaining")
         user_choice = input()
+        while user_choice in correct_guesses:
+            print("Correct Player Already Guessed in this Square, please select another square")
+            user_choice = input()
         player = input(f"Enter player for {teams_x[choice_dict.get(user_choice)[0]]} and {teams_y[choice_dict.get(user_choice)[1]]}: ")
         for index, row in df.iterrows():   
             if player == row[0]:
@@ -63,17 +67,22 @@ def generate_player_grid():
                 while x<len(player_teams):
                     team_names.insert(x, team_map.get(player_teams[x]))
                     x=x+1
-        if all(var in team_names for var in [teams_x[choice_dict.get(user_choice)[0]],teams_y[choice_dict.get(user_choice)[1]] ]):
-            print('Correct!')
-            temp_player_dict = dict({user_choice: player})
-            correct_players.update(temp_player_dict)
-            correct_grids.insert(num_correct, user_choice)
-            num_correct = num_correct + 1
+                print(team_names)
+                print([teams_x[choice_dict.get(user_choice)[0]],teams_y[choice_dict.get(user_choice)[1]]])
+                if all(var in team_names for var in [teams_x[choice_dict.get(user_choice)[0]],teams_y[choice_dict.get(user_choice)[1]] ]):
+                    print('Correct!')
+                    temp_player_dict = dict({user_choice: player})
+                    correct_guesses.insert(num_correct, user_choice)
+                    correct_players.update(temp_player_dict)
+                    num_correct = num_correct + 1
+                    guesses_remaining = guesses_remaining - 1
+                    print(correct_players)
+                else:
+                    print('Incorrect :(')
+                    guesses_remaining = guesses_remaining - 1
+                    print(correct_players)
         else:
-            print('Incorrect :(')
-        guesses_remaining = guesses_remaining - 1
-        print(correct_players)
-        
+            print('Player Not Found, please try again')
 
     # Generate the grid
     """""
