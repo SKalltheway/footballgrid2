@@ -8,7 +8,7 @@ def generate_player_grid():
     teams_x_data = ["CARDINALS", "FALCONS", "RAVENS", "BILLS", "PANTHERS","BENGALS", "BROWNS", "BEARS", "COWBOYS", "BRONCOS", "LIONS", "PACKERS", "TEXANS", "COLTS", "CHIEFS", "CHARGERS", "RAMS", "JAGUARS", "DOLPHINS", "VIKINGS", "PATRIOTS", "SAINTS", "GIANTS", "JETS", "RAIDERS", "EAGLES", "49ERS", "SEAHAWKS", "STEELERS", "BUCCANEERS", "TITANS", "COMMANDERS"]
     teams_y_data = ["CARDINALS", "FALCONS", "RAVENS", "BILLS", "PANTHERS","BENGALS", "BROWNS", "BEARS", "COWBOYS", "BRONCOS", "LIONS", "PACKERS", "TEXANS", "COLTS", "CHIEFS", "CHARGERS", "RAMS", "JAGUARS", "DOLPHINS", "VIKINGS", "PATRIOTS", "SAINTS", "GIANTS", "JETS", "RAIDERS", "EAGLES", "49ERS", "SEAHAWKS", "STEELERS", "BUCCANEERS", "TITANS", "COMMANDERS"]
 
-    team_map = dict({'Ari' : 'CARDINALS', 'Atl' : 'FALCONS', 'Bal' : 'RAVENS', 'Buf': 'BILLS', 'Car': 'PANTHERS', 'Cin': 'BENGALS', 'Cle' : 'BROWNS', 'Chi': 'BEARS', 'Dal': 'COWBOYS', 'Den':'BRONCOS', 'Det': 'LIONS', 'GB': 'PACKERS', 'Hou': 'TEXANS', 'Ind': 'COLTS', 'KC': 'CHIEFS', 'LAC': 'CHARGERS', 'SD': 'CHARGERS', 'LAR':'RAMS', 'Stl':'RAMS', 'LA': 'RAMS', 'Jax': 'JAGUARS', 'Mia':'DOLPHINS', 'Min': 'VIKINGS', 'NE': 'PATRIOTS', 'NO': 'SAINTS', 'NYG': 'GIANTS', 'NYJ': 'JETS', 'LV': 'RAIDERS', 'Oak': 'RAIDERS', 'Phi': 'EAGLES', 'SF': '49ERS', 'Sea': 'SEAHWAKS', 'Pit': 'STEELERS', 'TB': 'BUCCANEERS', 'Ten':'TITANS', 'Was': 'COMMANDERS'  })
+    team_map = dict({'Ari' : 'CARDINALS', 'Atl' : 'FALCONS', 'Bal' : 'RAVENS', 'Buf': 'BILLS', 'Car': 'PANTHERS', 'Cin': 'BENGALS', 'Cle' : 'BROWNS', 'Chi': 'BEARS', 'Dal': 'COWBOYS', 'Den':'BRONCOS', 'Det': 'LIONS', 'GB': 'PACKERS', 'Hou': 'TEXANS', 'Ind': 'COLTS', 'KC': 'CHIEFS', 'LAC': 'CHARGERS', 'SD': 'CHARGERS', 'LAR':'RAMS', 'Stl':'RAMS', 'LA': 'RAMS', 'Jax': 'JAGUARS', 'Mia':'DOLPHINS', 'Min': 'VIKINGS', 'NE': 'PATRIOTS', 'NO': 'SAINTS', 'NYG': 'GIANTS', 'NYJ': 'JETS', 'LV': 'RAIDERS', 'Oak': 'RAIDERS', 'Phi': 'EAGLES', 'SF': '49ERS', 'Sea': 'SEAHAWKS', 'Pit': 'STEELERS', 'TB': 'BUCCANEERS', 'Ten':'TITANS', 'Was': 'COMMANDERS'  })
     choice_dict = dict({'1': [0,0], '2': [1,0], '3': [2,0], '4': [0,1], '5': [1,1], '6': [2,1], '7': [0,2], '8': [1,2], '9': [2,2]})
     correct_players = dict({'1': 'X', '2': 'X', '3': 'X', '4': 'X', '5':'X', '6': 'X', '7': 'X', '8': 'X', '9': 'X'})
     teams_x = [random.choice(teams_x_data)]
@@ -76,7 +76,7 @@ def generate_player_grid():
                     correct_players.update(temp_player_dict)
                     num_correct = num_correct + 1
                     guesses_remaining = guesses_remaining - 1
-                    print(correct_players)
+                    print(correct_players.get(1))
                 else:
                     print('Incorrect :(')
                     guesses_remaining = guesses_remaining - 1
@@ -113,8 +113,16 @@ def generate_player_grid():
                 row1.append(player)
             guesses_remaining = guesses_remaining - 1
     grid.append(row1)
-    
-    # Print the grid
+    """
+
+    row1 = [correct_players.get('1'), correct_players.get('2'), correct_players.get('3')]
+    row2 = [correct_players.get('4'), correct_players.get('5'), correct_players.get('6')] 
+    row3 = [correct_players.get('7'), correct_players.get('8'), correct_players.get('9')]
+    grid.append(row1)
+    grid.append(row2)
+    grid.append(row3)
+
+    #Print the grid
     print("  |", end="")
     for team_y in teams_y:
         print(f" {team_y} |", end="")
@@ -127,6 +135,6 @@ def generate_player_grid():
             print(f" {player} |", end="")
         print()
         print("-" * (6 + 9 * len(teams_y)))
-"""
+
 # Generate and display the player grid
 generate_player_grid()
