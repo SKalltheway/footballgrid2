@@ -4,6 +4,8 @@ import pandas as pd
 
 DATA_PATH = 'all_NFL_players_ever.csv'
 
+
+
 def generate_player_grid():
     teams_x_data = ["CARDINALS", "FALCONS", "RAVENS", "BILLS", "PANTHERS","BENGALS", "BROWNS", "BEARS", "COWBOYS", "BRONCOS", "LIONS", "PACKERS", "TEXANS", "COLTS", "CHIEFS", "CHARGERS", "RAMS", "JAGUARS", "DOLPHINS", "VIKINGS", "PATRIOTS", "SAINTS", "GIANTS", "JETS", "RAIDERS", "EAGLES", "49ERS", "SEAHAWKS", "STEELERS", "BUCCANEERS", "TITANS", "COMMANDERS"]
     teams_y_data = ["CARDINALS", "FALCONS", "RAVENS", "BILLS", "PANTHERS","BENGALS", "BROWNS", "BEARS", "COWBOYS", "BRONCOS", "LIONS", "PACKERS", "TEXANS", "COLTS", "CHIEFS", "CHARGERS", "RAMS", "JAGUARS", "DOLPHINS", "VIKINGS", "PATRIOTS", "SAINTS", "GIANTS", "JETS", "RAIDERS", "EAGLES", "49ERS", "SEAHAWKS", "STEELERS", "BUCCANEERS", "TITANS", "COMMANDERS"]
@@ -58,7 +60,6 @@ def generate_player_grid():
         for index, row in df.iterrows():   
             if player == row[0]:
                 player_name = player
-                print(player_name)
                 player_teams_with_years = row[3].split()
                 player_teams = [item for item in player_teams_with_years if not (item.isdigit() or len(item) > 4 )]
                 y = 0
@@ -70,8 +71,6 @@ def generate_player_grid():
                 while x<len(player_teams):
                     team_names.insert(x, team_map.get(player_teams[x]))
                     x=x+1
-                print(team_names)
-                print([teams_x[choice_dict.get(user_choice)[0]],teams_y[choice_dict.get(user_choice)[1]]])
                 if all(var in team_names for var in [teams_x[choice_dict.get(user_choice)[0]],teams_y[choice_dict.get(user_choice)[1]] ]):
                     print('Correct!')
                     temp_player_dict = dict({user_choice: player_name})
@@ -82,43 +81,9 @@ def generate_player_grid():
                 else:
                     print('Incorrect :(')
                     guesses_remaining = guesses_remaining - 1
-                    print(correct_players)
         if not player_name:
             print('Player Not Found, please try again')
         
-        
-
-    # Generate the grid
-    """""
-    for i in range(3):
-        row1 = []
-        for j in range(3):
-            print("Guesses Remaining:",  guesses_remaining)
-            player = input(f"Enter player for {teams_x[i]} and {teams_y[j]}: ")
-            for index, row in df.iterrows():   
-                if player == row[0]:
-                    player_teams_with_years = row[3].split()
-                    player_teams = [item for item in player_teams_with_years if not (item.isdigit() or len(item) > 4 )]
-                    y = 0
-                    while y<len(player_teams):
-                        player_teams[y] = player_teams[y].translate({ord(","): None})
-                        y = y + 1
-                    x = 0
-                    team_names = []
-                    while x<len(player_teams):
-                        team_names.insert(x, team_map.get(player_teams[x]))
-                        x=x+1
-            if all(var in team_names for var in [teams_x[i], teams_y[j]]):
-                print('Correct!')
-                row1.append(player)
-            else:
-                print('Incorrect :(')
-                player = 'X'
-                row1.append(player)
-            guesses_remaining = guesses_remaining - 1
-    grid.append(row1)
-    """
-
     row1 = [correct_players.get('1'), correct_players.get('4'), correct_players.get('7')]
     row2 = [correct_players.get('2'), correct_players.get('5'), correct_players.get('8')] 
     row3 = [correct_players.get('3'), correct_players.get('6'), correct_players.get('9')]
