@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>3x3 Grid with Clickable Buttons</title>
+  <title>Immaculate Gridiron</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -25,7 +25,65 @@
   </style>
 </head>
 <body>
-  <h1>3x3 Grid with Clickable Buttons</h1>
+  <div class= "search-box">
+    <div class = "row">
+      <input type= "text" id= "input-box" placeholder="Enter a Players Name" autocomplete="off">
+      <button>search</button>
+    </div>
+    <div class="result-box">
+    </div>
+  </div>
+  <style>
+    body {
+      background: #262a2f;
+      color: #333;
+      
+    }
+    .search-box{
+      width: 600px;
+      background: #fff;
+      margin: 200px auto 0;
+      border-radius: 5px;
+    }
+
+    .row{
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    input{
+      flex: 1;
+      height: 50px;
+      background: transparent;
+      border: 0;
+      outline: 0;
+      font-size: 18px;
+      color:#333;
+    }
+
+    ::placeholder{
+      color: #555;
+    }
+
+    .result-box ul{
+      border-top: 1px solid #999;
+      padding: 15px 10px;
+    }
+
+    .result-box ul li{
+      list-style: none;
+      border-radius: 3px;
+      padding: 15px 10 px;
+      cursor: pointer;
+    }
+
+    .result-box ul li:hover{
+      background-color: #e9f3ff;
+    }
+  </style>
+  <script src = "autocomplete.js"></script>
+  <h1>Immaculate Gridiron</h1>
   <div class="grid-container">
     <div class="grid-button" onclick="handleButtonClick(1, 1)"></div>
     <div class="grid-button" onclick="handleButtonClick(1, 2)"></div>
