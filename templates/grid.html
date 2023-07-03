@@ -28,6 +28,18 @@
   <div class= "search-box">
     <div class = "row">
       <input type= "text" id= "input-box" placeholder="Enter a Players Name" autocomplete="off">
+      <script>
+        $( function() {
+          var availableTags = [
+              {% for language in languages %}
+                  "{{playername}}",
+              {% endfor %}
+          ];
+          $( "#tags" ).autocomplete({
+            source: availableTags
+          });
+        } );
+        </script>
       <button>search</button>
     </div>
     <div class="result-box">
