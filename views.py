@@ -12,4 +12,4 @@ with open("all_NFL_players_ever.csv") as f:
 def home():
     
     #return render_template('index.html', team = "Colts")
-    return render_template('search.html', playernames = player_names)
+    return render_template('temp.html')

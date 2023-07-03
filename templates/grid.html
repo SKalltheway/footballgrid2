@@ -28,23 +28,12 @@
   <div class= "search-box">
     <div class = "row">
       <input type= "text" id= "input-box" placeholder="Enter a Players Name" autocomplete="off">
-      <script>
-        $( function() {
-          var availableTags = [
-              {% for language in languages %}
-                  "{{playername}}",
-              {% endfor %}
-          ];
-          $( "#tags" ).autocomplete({
-            source: availableTags
-          });
-        } );
-        </script>
       <button>search</button>
     </div>
     <div class="result-box">
     </div>
   </div>
+  <script src="autocomplete.js"></script>
   <style>
     body {
       background: #262a2f;
@@ -94,7 +83,6 @@
       background-color: #e9f3ff;
     }
   </style>
-  <script src = "autocomplete.js"></script>
   <h1>Immaculate Gridiron</h1>
   <div class="grid-container">
     <div class="grid-button" onclick="handleButtonClick(1, 1)"></div>
@@ -107,7 +95,6 @@
     <div class="grid-button" onclick="handleButtonClick(3, 2)"></div>
     <div class="grid-button" onclick="handleButtonClick(3, 3)"></div>
   </div>
-
   <script>
     function handleButtonClick(row, col) {
       alert(`Button clicked at Row ${row}, Column ${col}`);
