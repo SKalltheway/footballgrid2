@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSV Column to List</title>
+  <title>CSV Search with Autocomplete</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <button onclick="loadCSV()">Load CSV</button>
-    <ul id="list"></ul>
+  <h1>CSV Search with Autocomplete</h1>
+  <input type="text" id="searchInput" placeholder="Search..." autocomplete="off">
+  <ul id="autocompleteList"></ul>
 
-    <script src="autocomplete.js"></script>
+  <script src= "/static/autocomplete.js"></script>
 </body>
 </html>

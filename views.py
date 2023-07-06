@@ -1,11 +1,17 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, send_from_directory
 import pandas as pd
-from csv import DictReader
+import os
 
 views = Blueprint(__name__, "views")
-with open("all_NFL_players_ever.csv") as f:
-    player_names = [row["Player"] for row in DictReader(f)]
 
+@views.route('/templates/static\autocomplete.js')
+def serve_static(filename):
+    return views.send_static_file("autocomplete.js")
+ 
+@views.route('/all_NFL_players_ever.csv')
+def serve_csv():
+    root_dir = os.path.dirname(os.path.abspath(__file__))
+    return send_from_directory(root_dir, 'all_NFL_players_ever.csv')
 
 
 @views.route("/", methods=["POST", "GET"])
