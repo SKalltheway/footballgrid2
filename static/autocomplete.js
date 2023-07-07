@@ -7,7 +7,7 @@ function loadCSV(callback) {
         callback(csvData);
       }
     };
-    xhr.open("GET", "all_NFL_players_ever.csv", true);
+    xhr.open("GET", "all_NFL_players_ever_real.csv", true);
     xhr.send();
   }
   

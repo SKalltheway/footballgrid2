@@ -8,10 +8,10 @@ views = Blueprint(__name__, "views")
 def serve_static(filename):
     return views.send_static_file("autocomplete.js")
  
-@views.route('/all_NFL_players_ever.csv')
+@views.route('/all_NFL_players_ever_real.csv')
 def serve_csv():
     root_dir = os.path.dirname(os.path.abspath(__file__))
-    return send_from_directory(root_dir, 'all_NFL_players_ever.csv')
+    return send_from_directory(root_dir, 'all_NFL_players_ever_real.csv')
 
 
 @views.route("/", methods=["POST", "GET"])
